@@ -1,0 +1,4 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Сметы</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body><div class="container"><a href="/">← Главная</a><h1>База смет</h1>
+<form method="post" action="{{ url_for('create_estimate') }}"><input name="name" placeholder="Название сметы" required><button>Добавить</button></form>
+<table><tr><th>ID</th><th>Название</th><th></th><th></th></tr>{% for e in estimates %}<tr><td>{{e.id}}</td><td>{{e.name}}</td><td><a href="{{ url_for('estimate_detail', estimate_id=e.id) }}">Открыть</a></td><td><form method="post" action="{{ url_for('delete_estimate', estimate_id=e.id) }}"><button>Удалить</button></form></td></tr>{% endfor %}</table>
+</div></body></html>
